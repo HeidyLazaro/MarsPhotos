@@ -28,7 +28,8 @@
         android:theme="@style/Theme.MarsPhotos"
         tools:targetApi="33">
         <activity
-            android:name=".MainActivity"
+            android:name=".MarsPhotosApplication"
+            android:allowBackup="true"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.MarsPhotos">
