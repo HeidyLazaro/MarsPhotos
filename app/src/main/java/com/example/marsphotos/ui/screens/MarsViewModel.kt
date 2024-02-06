@@ -22,6 +22,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.marsphotos.network.MarsApi
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
 import java.io.IOException
 
 //Estados
@@ -47,17 +48,13 @@ class MarsViewModel : ViewModel() {
      * [MarsPhoto] [List] [MutableList].
      */
     private fun getMarsPhotos() {
-        //Inicia la corrutina
-       viewModelScope.launch {
-           //Manejo de excepcion
-          marsUiState = try {
-               //llamamos el metodo getPhotos() desde la interfaz
-               val listResult = MarsApi.retrofitService.getPhotos()
-               //asignamos el resultado
-               MarsUiState.Success(listResult)
-           }catch (e: IOException){
-               MarsUiState.Error
-           }
-       }
+        viewModelScope.launch {
+            marsUiState = try {
+                val listResult = MarsApi.retrofitService.getPhotos()
+                MarsUiState.Success("Success: ${listResult.size} Mars photos retrieved")
+            } catch (e: IOException) {
+                MarsUiState.Error
+            }
+        }
     }
 }
