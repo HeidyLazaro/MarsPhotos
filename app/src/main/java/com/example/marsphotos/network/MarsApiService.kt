@@ -6,6 +6,7 @@ import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
 import retrofit2.create
 import retrofit2.http.GET
+import com.example.marsphotos.network.MarsPhoto
 
 //URL base del servicio web
 //private const val BASE_URL =
